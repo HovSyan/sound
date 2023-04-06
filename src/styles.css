@@ -8,6 +8,7 @@
 
 html {
   font-family: 'Schibsted Grotesk', sans-serif;
+  height: 100%;
 }
 
 body {
@@ -15,6 +16,7 @@ body {
   background-image: linear-gradient(to right bottom, #24247c, #5e5ea2);
   background-repeat: no-repeat;
   color: white;
+  height: 90%;
 }
 
 .heading {
