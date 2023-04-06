@@ -1,0 +1,5 @@
+<span class="page-number"
+      [class.page-number-selected]="page === currentPage"
+      *ngFor="let page of pages"
+      (click)="page !== currentPage && pageChanged.emit(page)"
+>{{page}}</span>
