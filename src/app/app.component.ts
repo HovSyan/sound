@@ -32,6 +32,17 @@ export class AppComponent implements OnInit {
     this.currentProgress += this.PROGRESS_STEP;
   }
 
+  onDone() {
+    setTimeout(() => {
+      this.currentPage++;
+      if(this.currentPage > this.itemsService.pages.length) {
+        this.currentPage = 1;
+      }
+      this.onPageChanged(this.currentPage);
+    }, 1000)
+
+  }
+
   private getCurrentItem() {
     return { ...this.itemsService.pages[this.currentPage - 1] };
   }

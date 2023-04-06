@@ -22,6 +22,7 @@ export class MainComponent implements OnChanges {
   @Input() current!: {text: string, audio: string};
 
   @Output() addProgress: EventEmitter<void> = new EventEmitter<void>();
+  @Output() done: EventEmitter<void> = new EventEmitter<void>();
 
   buttons: {text: string, selected: boolean, isRight: boolean}[] = [];
 
@@ -55,5 +56,9 @@ export class MainComponent implements OnChanges {
     const addProgress = button.isRight && this.buttons.every(b => !b.selected);
     button.selected = true;
     addProgress && this.addProgress.emit();
+
+    if(addProgress || this.buttons.every(b => b.selected)) {
+      this.done.emit();
+    }
   }
 }
