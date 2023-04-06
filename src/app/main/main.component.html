@@ -1,7 +1,11 @@
-<div (click)="play" class="sound-image">
+<div (click)="play()" class="sound-image">
   <mat-icon>volume_up</mat-icon>
   <video #audio *ngIf="current?.audio" [src]="current.audio"></video>
 </div>
 <div class="button-container">
-  <button class="answer" *ngFor="let btn of buttons">{{btn.text}}</button>
+  <button (click)="onButtonClick(btn.text)"
+          class="answer"
+          [class.answer-selected]="btn.selected"
+          [class.answer-right]="btn.selected && btn.isRight"
+          *ngFor="let btn of buttons">{{btn.text}}</button>
 </div>

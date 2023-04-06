@@ -6,6 +6,7 @@ import { PagesComponent } from './pages/pages.component';
 import { MainComponent } from './main/main.component';
 import { ProgressComponent } from './progress/progress.component';
 import {MatIconModule} from "@angular/material/icon";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {MatIconModule} from "@angular/material/icon";
   ],
   imports: [
     BrowserModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

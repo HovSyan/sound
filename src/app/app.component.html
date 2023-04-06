@@ -6,7 +6,7 @@
              (pageChanged)="onPageChanged($event)"></app-pages>
 </header>
 <main>
-  <app-main [current]="current"></app-main>
-  <app-progress></app-progress>
+  <app-main (addProgress)="onAddProgress()" [current]="current"></app-main>
+  <app-progress [total]="totalProgress" [current]="currentProgress"></app-progress>
 </main>
 <footer class="footer"></footer>

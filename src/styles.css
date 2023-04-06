@@ -1,3 +1,7 @@
+:root {
+  --app-color-primary: white
+}
+
 *, *::after, *::before {
   box-sizing: border-box;
 }
@@ -67,7 +71,6 @@ app-main {
   display: flex;
   margin: 20px;
   justify-content: center;
-  gap: 1;
 }
 
 .answer {
@@ -79,8 +82,17 @@ app-main {
   margin-left: 10px;
   transition: all .2s;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .answer:hover {
   transform: translateY(-5px);
+}
+
+.answer-selected {
+  background: linear-gradient(to right bottom, #B72D2DFF, #770c31);;
+}
+
+.answer-right {
+  background: linear-gradient(to right bottom, rgba(12, 122, 85, 0.8), rgba(40, 180, 133, 0.8));;
 }

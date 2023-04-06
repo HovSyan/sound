@@ -7,9 +7,13 @@ import {ItemsService} from "./items.service";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  PROGRESS_STEP = 11;
+
   title = 'sound';
   current!: { text: string, audio: string };
   currentPage: number = 1;
+  totalProgress!: number;
+  currentProgress: number = 0;
 
   constructor(public itemsService: ItemsService) {
   }
@@ -21,6 +25,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.current = this.getCurrentItem() ;
+    this.totalProgress = this.itemsService.pages.length * this.PROGRESS_STEP;
+  }
+
+  onAddProgress() {
+    this.currentProgress += this.PROGRESS_STEP;
   }
 
   private getCurrentItem() {

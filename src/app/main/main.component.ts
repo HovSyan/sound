@@ -1,4 +1,14 @@
-import {Component, Input, OnChanges, SimpleChange, SimpleChanges, ViewChild} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChange,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {ItemsService} from "../items.service";
 
 @Component({
@@ -7,9 +17,11 @@ import {ItemsService} from "../items.service";
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnChanges {
-  @ViewChild('audio') audio!: HTMLVideoElement;
+  @ViewChild('audio') audio!: ElementRef<HTMLVideoElement>;
 
-  @Input() current!: {text: string, audio: string}
+  @Input() current!: {text: string, audio: string};
+
+  @Output() addProgress: EventEmitter<void> = new EventEmitter<void>();
 
   buttons: {text: string, selected: boolean, isRight: boolean}[] = [];
 
@@ -35,6 +47,13 @@ export class MainComponent implements OnChanges {
   }
 
   play() {
-    this.audio.play();
+    this.audio.nativeElement.play();
+  }
+
+  onButtonClick(text: string) {
+    const button = this.buttons.find(b => b.text === text)!;
+    const addProgress = button.isRight && this.buttons.every(b => !b.selected);
+    button.selected = true;
+    addProgress && this.addProgress.emit();
   }
 }
